@@ -16,7 +16,7 @@
 					"1.View Balance 2.Withdraw 3.Deposit 4.Exit");
 				process = Console.ReadLine();
 				if (process == "1") { 
-					Console.WriteLine($"Your Current Balance is: {ViewBalance(Balance)}");
+					Console.WriteLine($"Your Current Balance is: {ViewBalance()}");
 				}
 				else if (process == "2") {
 
@@ -75,10 +75,10 @@
 
 		//ViewBalance
 
-		public static decimal ViewBalance(decimal balance)
+		public static decimal ViewBalance()
 		{
 
-			return balance;
+			return Balance;
 		}
 		//ViewBalance
 
