@@ -12,8 +12,8 @@
 		{
 			string process = "";
 			while (process !="4") {
-				Console.WriteLine("Please Enter the number of the process you want from list " +
-					"1.View Balance 2.Withdraw 3.Deposit 4.Exit");
+				Console.WriteLine("Please Enter the number of the process you want from list\r\n \r\n" +
+					"1.View Balance \r\n \r\n2.Withdraw  \r\n\r\n3.Deposit \r\n\r\n4.Exit");
 				process = Console.ReadLine();
 				if (process == "1") { 
 					Console.WriteLine($"Your Current Balance is: {ViewBalance()}");
@@ -45,6 +45,8 @@
 						Console.WriteLine("the Proccess did Not completed You did Not Enter any Value");
 					}
 				}
+				////////////Deposit 
+
 				else if (process == "3") {
 
 					Console.WriteLine("Please enter the value to be added");
@@ -53,7 +55,7 @@
 						decimal add = decimal.Parse(Console.ReadLine());
 						decimal result=Deposit(add);
 						if(result == -1) {
-							Console.WriteLine("the Proccess did Not completed Your Balance is Not enough");
+							Console.WriteLine("the Proccess did Not completed Your Entered a Negative value");
 						}
 						else {
 							Console.WriteLine("the Proccess Done successfuly");
