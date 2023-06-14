@@ -5,58 +5,62 @@ namespace Test_ATM
 {
 	public class UnitTest1
 	{
-		
+
 
 		[Theory]
-		[InlineData(-1,-1)]
-		[InlineData(0,-1)]
-		[InlineData(2,12)]
-		[InlineData(2.3,12.3)]
-		
-		public void ReturnValueForDeposit(decimal numToTest, decimal expectedValue)
+		[InlineData(-1, -1,10)]
+		[InlineData(0, -1,10)]
+		[InlineData(2, 12,10)]
+		[InlineData(2.3, 12.3,10)]
+
+		public void ReturnValueForDeposit(decimal numToTest, decimal expectedValue,decimal balance)
 		{
-			ATM.Program.Balance = 10;
+			ATM.Program.Balance = balance;
 			Assert.Equal(expectedValue, ATM.Program.Deposit(numToTest));
 		}
 
-
-		[Fact]
-		public void TestIFBalanceEqualZeroInWithdraw()
+		
+		[Theory]
+		[InlineData(5, -2, 0)]
+		public void TestIFBalanceEqualZeroInWithdraw(decimal numToTest, decimal expectedValue, decimal balance)
 		{
-			int truncation = 5;
-			ATM.Program.Balance = 0;
-			Assert.Equal(-2, ATM.Program.Withdraw(truncation));
+			
+			ATM.Program.Balance = balance;
+			Assert.Equal(expectedValue, ATM.Program.Withdraw(numToTest));
 
 
 		}
+
 		[Theory]
-		[InlineData(-3, -1)]
-		[InlineData(0, -1)]
-		[InlineData(10.5, -1)]
-		[InlineData(2, 8)]
-		[InlineData(2.3, 7.7)]
+		[InlineData(-3, -1,10)]
+		[InlineData(0, -1,10)]
+		[InlineData(10.5, -1,10)]
+		[InlineData(2, 8,10)]
+		[InlineData(2.3, 7.7,10)]
 		
 
-		public void ReturnValueForWithdraw(decimal numToTest, decimal expectedValue)
+		public void ReturnValueForWithdraw(decimal numToTest, decimal expectedValue,decimal balance)
 		{
-			ATM.Program.Balance = 10;
+			ATM.Program.Balance = balance;
 			Assert.Equal(expectedValue, ATM.Program.Withdraw(numToTest));
 		}
 
 
 
-		[Fact]
-		public void ReturnTheBalanceValueEqule0()
+		[Theory]
+		[InlineData(0, 0,0)]
+		public void ReturnTheBalanceValueEqule0(decimal numToTest, decimal expectedValue, decimal balance)
 		{
-			ATM.Program.Balance = 0;
-			Assert.Equal(0, ATM.Program.ViewBalance());
+			ATM.Program.Balance = balance;
+			Assert.Equal(expectedValue, ATM.Program.ViewBalance());
 		}
 
-		[Fact]
-		public void ReturnTheBalanceValueEqule15()
+		[Theory]
+		[InlineData(15, 15, 15)]
+		public void ReturnTheBalanceValueEqule15(decimal numToTest, decimal expectedValue, decimal balance)
 		{
-			ATM.Program.Balance = 15;
-			Assert.Equal(15, ATM.Program.ViewBalance());
+			ATM.Program.Balance = balance;
+			Assert.Equal(expectedValue, ATM.Program.ViewBalance());
 		}
 
 	}
