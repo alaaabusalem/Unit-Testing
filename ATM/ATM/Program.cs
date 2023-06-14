@@ -20,14 +20,14 @@
 				}
 				else if (process == "2") {
 
-					Console.WriteLine("Please enter the value to be deducted");
+					Console.WriteLine("Please enter a value to be deducted");
 					try
 					{
 						decimal truncation = decimal.Parse(Console.ReadLine());
 						decimal result= Withdraw(truncation);
 						if (result == -2)
 						{
-							Console.WriteLine("Your Balance is 0 we can't complete the Process");
+							Console.WriteLine("Your Balance is Not enough you can't complete the Process");
 						}
 						else if (result == -1)
 						{
@@ -39,7 +39,7 @@
 							Console.WriteLine($"Your Current Balance is: {result}");
 						};
 					}
-					catch (NullReferenceException ex)
+					catch (System.FormatException ex)
 					{
 						Console.WriteLine(ex.Message);
 						Console.WriteLine("the Proccess did Not completed You did Not Enter any Value");
@@ -49,7 +49,7 @@
 
 				else if (process == "3") {
 
-					Console.WriteLine("Please enter the value to be added");
+					Console.WriteLine("Please enter a value to be added");
 					try
 					{
 						decimal add = decimal.Parse(Console.ReadLine());
@@ -62,7 +62,7 @@
 							Console.WriteLine($"Your Current Balance is: {result}"); }
 						
 					}
-					catch (NullReferenceException ex)
+					catch (System.FormatException ex)
 					{
 						Console.WriteLine(ex.Message);
 						Console.WriteLine("the Proccess did Not completed You did Not Enter any Value");
@@ -88,7 +88,7 @@
 		public static decimal Withdraw(decimal truncation)
 		{
 
-			if (Balance == 0) {
+			if (Balance == 0 || truncation>Balance) {
 				return -2;
 			}
 

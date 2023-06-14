@@ -33,12 +33,12 @@ namespace Test_ATM
 
 		[Theory]
 		[InlineData(-3, -1,10)]
-		[InlineData(0, -1,10)]
-		[InlineData(10.5, -1,10)]
-		[InlineData(2, 8,10)]
-		[InlineData(2.3, 7.7,10)]
+		[InlineData(5, -2,0)]
+		[InlineData(2, 8, 10)]
+		[InlineData(10.5, -2, 10)]
+		[InlineData(2.3, 7.7, 10)]
+		[InlineData(-11, -1, 10)]
 		
-
 		public void ReturnValueForWithdraw(decimal numToTest, decimal expectedValue,decimal balance)
 		{
 			ATM.Program.Balance = balance;
